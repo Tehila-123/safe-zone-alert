@@ -9,6 +9,9 @@ import LoginScreen from "./pages/LoginScreen";
 import VerifyPhoneScreen from "./pages/VerifyPhoneScreen";
 import ForgotPasswordScreen from "./pages/ForgotPasswordScreen";
 import HomeScreen from "./pages/HomeScreen";
+import PoliceDashboard from "./pages/police/PoliceDashboard";
+import AccidentDetails from "./pages/police/AccidentDetails";
+import DispatchUnit from "./pages/police/DispatchUnit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/verify-phone" element={<VerifyPhoneScreen />} />
           <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
           <Route path="/home" element={<HomeScreen />} />
+          <Route path="/police" element={<PoliceDashboard />} />
+          <Route path="/police/accident/:id" element={<AccidentDetails />} />
+          <Route path="/police/accident/:id/dispatch" element={<DispatchUnit />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
