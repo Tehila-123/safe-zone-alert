@@ -37,7 +37,7 @@ const VerifyPhoneScreen: React.FC = () => {
         title: "Phone verified!",
         description: "Your phone number has been verified successfully.",
       });
-      navigate("/dashboard");
+      navigate("/home");
     }
   };
 

@@ -8,7 +8,7 @@ import RegisterScreen from "./pages/RegisterScreen";
 import LoginScreen from "./pages/LoginScreen";
 import VerifyPhoneScreen from "./pages/VerifyPhoneScreen";
 import ForgotPasswordScreen from "./pages/ForgotPasswordScreen";
-import DashboardScreen from "./pages/DashboardScreen";
+import HomeScreen from "./pages/HomeScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/verify-phone" element={<VerifyPhoneScreen />} />
           <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
-          <Route path="/dashboard" element={<DashboardScreen />} />
+          <Route path="/home" element={<HomeScreen />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

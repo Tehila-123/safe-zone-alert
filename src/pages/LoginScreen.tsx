@@ -23,7 +23,7 @@ const LoginScreen: React.FC = () => {
       title: "Welcome back!",
       description: "You have successfully logged in.",
     });
-    navigate("/dashboard");
+    navigate("/home");
   };
 
   return (
