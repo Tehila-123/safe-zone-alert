@@ -82,22 +82,14 @@ const DispatchUnit = () => {
                 <span className="text-foreground font-mono">{unit.phone}</span>
               </div>
 
-              <div className="flex gap-3">
-                <Button
-                  className="flex-1"
-                  onClick={() => handleDispatch(unit)}
-                >
-                  Dispatch Unit
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex-1"
-                  onClick={() => handleCall(unit.phone)}
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Call
-                </Button>
-              </div>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => handleCall(unit.phone)}
+              >
+                <Phone className="h-4 w-4 mr-2" />
+                Call
+              </Button>
             </CardContent>
           </Card>
         ))}

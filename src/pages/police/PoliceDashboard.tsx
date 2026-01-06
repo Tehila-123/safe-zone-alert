@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertTriangle, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,41 +10,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-
-interface Accident {
-  id: number;
-  time: string;
-  location: string;
-  status: "New" | "Unit informed" | "Resolved";
-  coordinates: string;
-  speed: number;
-  address: string;
-}
-
-const mockAccidents: Accident[] = [
-  {
-    id: 1,
-    time: "08:41",
-    location: "Kimironko",
-    status: "New",
-    coordinates: "-1.9456, 30.0615",
-    speed: 0,
-    address: "KG 15 Ave, Kimironko",
-  },
-  {
-    id: 2,
-    time: "08:30",
-    location: "Nyamirambo",
-    status: "Unit informed",
-    coordinates: "-1.9789, 30.0412",
-    speed: 45,
-    address: "KN 3 Rd, Nyamirambo",
-  },
-];
+import { useAccidents, Accident } from "@/context/AccidentContext";
 
 const PoliceDashboard = () => {
   const navigate = useNavigate();
-  const [accidents] = useState<Accident[]>(mockAccidents);
+  const { accidents } = useAccidents();
 
   const activeAccidents = accidents.filter((a) => a.status !== "Resolved").length;
   const respondingUnits = accidents.filter((a) => a.status === "Unit informed").length;
