@@ -62,7 +62,7 @@ const HomeScreen: React.FC = () => {
           <img 
             src={carHero} 
             alt="Gerayo Logo" 
-            className="w-20 h-20 object-contain mb-3"
+            className="w-32 h-32 object-contain mb-3"
           />
           <h1 className="text-3xl font-bold text-foreground">Gerayo</h1>
           <p className="text-sm text-muted-foreground mt-1">Accident Detection System</p>
