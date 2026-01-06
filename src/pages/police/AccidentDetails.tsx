@@ -1,62 +1,38 @@
-import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, MapPin, Clock, Gauge, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-
-interface AccidentData {
-  id: number;
-  time: string;
-  location: string;
-  address: string;
-  coordinates: string;
-  speed: number;
-  status: "New" | "Unit informed" | "Resolved";
-}
-
-const mockAccidentData: Record<number, AccidentData> = {
-  1: {
-    id: 1,
-    time: "08:41",
-    location: "Kimironko",
-    address: "KG 15 Ave, Kimironko",
-    coordinates: "-1.9456, 30.0615",
-    speed: 0,
-    status: "New",
-  },
-  2: {
-    id: 2,
-    time: "08:30",
-    location: "Nyamirambo",
-    address: "KN 3 Rd, Nyamirambo",
-    coordinates: "-1.9789, 30.0412",
-    speed: 45,
-    status: "Unit informed",
-  },
-};
+import { useAccidents, Accident } from "@/context/AccidentContext";
 
 const AccidentDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { toast } = useToast();
+  const { accidents, updateAccidentStatus } = useAccidents();
   const accidentId = parseInt(id || "1");
   
-  const [accident, setAccident] = useState<AccidentData>(
-    mockAccidentData[accidentId] || mockAccidentData[1]
-  );
+  const accident = accidents.find((a) => a.id === accidentId);
+
+  if (!accident) {
+    return (
+      <div className="min-h-screen bg-background p-6 flex items-center justify-center">
+        <p className="text-muted-foreground">Accident not found</p>
+      </div>
+    );
+  }
 
   const handleUnitInformed = () => {
-    setAccident((prev) => ({ ...prev, status: "Unit informed" }));
+    updateAccidentStatus(accidentId, "Unit informed");
     toast({
       title: "Status Updated",
       description: "Status updated to Unit informed.",
     });
   };
 
-  const getStatusBadge = (status: AccidentData["status"]) => {
-    const variants: Record<AccidentData["status"], string> = {
+  const getStatusBadge = (status: Accident["status"]) => {
+    const variants: Record<Accident["status"], string> = {
       New: "bg-destructive text-destructive-foreground",
       "Unit informed": "bg-yellow-500 text-black",
       Resolved: "bg-success text-success-foreground",

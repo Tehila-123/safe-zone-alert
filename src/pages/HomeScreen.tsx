@@ -71,41 +71,41 @@ const HomeScreen: React.FC = () => {
         {/* Status Indicators */}
         <div className="flex-1 flex flex-col items-center justify-center gap-6 px-4">
           {/* System Status */}
-          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-6 text-center animate-scale-in">
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-4xl">🟢</span>
+          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-4 text-center animate-scale-in">
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🟢</span>
               <div>
-                <p className="text-lg text-muted-foreground">System Status:</p>
-                <p className="text-3xl font-bold text-success">ACTIVE</p>
+                <p className="text-sm text-muted-foreground">System Status:</p>
+                <p className="text-xl font-bold text-success">ACTIVE</p>
               </div>
             </div>
           </div>
 
           {/* Location Status */}
-          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-5 animate-scale-in" style={{ animationDelay: "0.1s" }}>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-3xl">📍</span>
-              <p className="text-2xl font-semibold text-foreground">
+          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-4 animate-scale-in" style={{ animationDelay: "0.1s" }}>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-xl">📍</span>
+              <p className="text-lg font-semibold text-foreground">
                 Location: <span className={isLocationOn ? "text-success" : "text-destructive"}>{isLocationOn ? "ON" : "OFF"}</span>
               </p>
             </div>
           </div>
 
           {/* Speed */}
-          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-5 animate-scale-in" style={{ animationDelay: "0.2s" }}>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-3xl">🧭</span>
-              <p className="text-2xl font-semibold text-foreground">
+          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-4 animate-scale-in" style={{ animationDelay: "0.2s" }}>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-xl">🧭</span>
+              <p className="text-lg font-semibold text-foreground">
                 Speed: <span className="text-primary">{speed} km/h</span>
               </p>
             </div>
           </div>
 
           {/* Accident Detection Status */}
-          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-5 animate-scale-in" style={{ animationDelay: "0.3s" }}>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-3xl">🛡️</span>
-              <p className="text-2xl font-semibold text-foreground">
+          <div className="w-full max-w-sm bg-secondary/50 rounded-2xl p-4 animate-scale-in" style={{ animationDelay: "0.3s" }}>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-xl">🛡️</span>
+              <p className="text-lg font-semibold text-foreground">
                 Accident Detection: <span className="text-success">ON</span>
               </p>
             </div>
