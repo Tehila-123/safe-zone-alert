@@ -47,11 +47,11 @@ const AccidentDetails = () => {
     mockAccidentData[accidentId] || mockAccidentData[1]
   );
 
-  const handleMarkResolved = () => {
-    setAccident((prev) => ({ ...prev, status: "Resolved" }));
+  const handleUnitInformed = () => {
+    setAccident((prev) => ({ ...prev, status: "Unit informed" }));
     toast({
       title: "Status Updated",
-      description: "Accident has been marked as resolved.",
+      description: "Status updated to Unit informed.",
     });
   };
 
@@ -140,11 +140,11 @@ const AccidentDetails = () => {
             <Button
               size="lg"
               variant="outline"
-              className="w-full border-success text-success hover:bg-success/10"
-              onClick={handleMarkResolved}
-              disabled={accident.status === "Resolved"}
+              className="w-full border-yellow-500 text-yellow-600 hover:bg-yellow-500/10"
+              onClick={handleUnitInformed}
+              disabled={accident.status === "Resolved" || accident.status === "Unit informed"}
             >
-              Mark Resolved
+              Unit Informed
             </Button>
           </div>
         </CardContent>

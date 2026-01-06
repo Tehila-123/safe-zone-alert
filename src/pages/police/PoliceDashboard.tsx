@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Car, AlertTriangle, Users } from "lucide-react";
+import { AlertTriangle, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -94,35 +94,6 @@ const PoliceDashboard = () => {
           </CardContent>
         </Card>
       </div>
-
-      {/* Live Map Section */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            🗺️ LIVE MAP
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="h-64 bg-muted rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/50" />
-            <p className="text-muted-foreground z-10">Map View Placeholder</p>
-            {/* Mock markers */}
-            <div className="absolute top-1/3 left-1/3 w-4 h-4 bg-destructive rounded-full animate-pulse" />
-            <div className="absolute top-1/2 right-1/3 w-4 h-4 bg-destructive rounded-full animate-pulse" />
-            <div className="absolute bottom-1/3 left-1/2 w-4 h-4 bg-primary rounded-full" />
-          </div>
-          <div className="flex gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-destructive" />
-              <span className="text-muted-foreground">Accident Marker (Red)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Car className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Police Unit Marker (Blue)</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
 
       {/* Accident List */}
       <Card>
