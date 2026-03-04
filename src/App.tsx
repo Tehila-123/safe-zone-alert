@@ -3,11 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import PoliceDashboard from "./pages/police/PoliceDashboard";
-import AccidentDetails from "./pages/police/AccidentDetails";
-import DispatchUnit from "./pages/police/DispatchUnit";
+import PoliceDashboard from "./features/accidents/pages/PoliceDashboard";
+import AccidentDetails from "./features/accidents/pages/AccidentDetails";
+import DispatchUnit from "./features/accidents/pages/DispatchUnit";
 import NotFound from "./pages/NotFound";
-import { AccidentProvider } from "./context/AccidentContext";
+import { AccidentProvider } from "./features/accidents/context/AccidentContext";
 
 const queryClient = new QueryClient();
 

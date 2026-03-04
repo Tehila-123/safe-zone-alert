@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 export interface Accident {
   id: number;
@@ -13,6 +13,7 @@ export interface Accident {
 interface AccidentContextType {
   accidents: Accident[];
   updateAccidentStatus: (id: number, status: Accident["status"]) => void;
+  addAccident: (accident: Omit<Accident, "id" | "status">) => void;
 }
 
 const initialAccidents: Accident[] = [
@@ -49,8 +50,35 @@ export const AccidentProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const addAccident = (newAccidentData: Omit<Accident, "id" | "status">) => {
+    const newAccident: Accident = {
+      ...newAccidentData,
+      id: accidents.length + 1,
+      status: "New",
+    };
+    setAccidents((prev) => [newAccident, ...prev]);
+  };
+
+  useEffect(() => {
+    const fetchAccidents = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/accidents");
+        if (response.ok) {
+          const data = await response.json();
+          setAccidents(data);
+        }
+      } catch (error) {
+        console.error("Error fetching accidents:", error);
+      }
+    };
+
+    fetchAccidents();
+    const interval = setInterval(fetchAccidents, 5000); // Poll every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <AccidentContext.Provider value={{ accidents, updateAccidentStatus }}>
+    <AccidentContext.Provider value={{ accidents, updateAccidentStatus, addAccident }}>
       {children}
     </AccidentContext.Provider>
   );
